@@ -1,5 +1,5 @@
 # Warehouse Inventory API 🏪
-A python-based solution for a Warehouse Inventory system.
+> A python-based solution for a Warehouse Inventory system using [FastAPI](https://fastapi.tiangolo.com/lo/).
 
 ## Overview:
 
