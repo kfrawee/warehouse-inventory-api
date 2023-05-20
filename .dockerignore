@@ -1,0 +1,40 @@
+# Ignore common development and editor files
+.git
+.vscode
+.idea
+*.pyc
+
+# Ignore files related to local development environments
+.env
+.env.*
+
+# Ignore build artifacts and compiled files
+__pycache__
+*.pyo
+*.pyd
+*.so
+*.egg-info
+dist
+build
+
+# Ignore package managers' files
+node_modules/
+vendor/
+
+# Ignore testing and coverage files
+.coverage
+htmlcov
+
+# Ignore logs and temporary files
+logs/
+*.log
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Ignore any other files or directories specific to your project
+debug_server.py
+*.db
+README.md
+tests
