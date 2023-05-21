@@ -4,7 +4,7 @@ import databases
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 # load environment variables
 load_dotenv()
@@ -16,8 +16,10 @@ if not DATABASE_URL:
         # database credentials should be stored in .env file
         # local with postgresql, for production; DATABASE_URL passed as ENV VAR
         DATABASE_URL = "postgresql://postgres:password@localhost:5432/postgres"
+    # For development and testing, using SQLite in-memory databases
+    elif os.environ.get("ENV") == "test":
+        DATABASE_URL = "sqlite:///./test.db"  # Change the path and name as needed
     else:
-        # For development and testing, using SQLite in-memory databases
         DATABASE_URL = "sqlite:///./dev.db"  # Change the path and name as needed
 # Create a Database instance
 database = databases.Database(DATABASE_URL)
@@ -40,12 +42,18 @@ def initialize_database():
     Base.metadata.create_all(bind=engine)
 
 
+# def get_db():
+#     """
+#     Get a new database session.
+#     """
+#     db = SessionLocal()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
 def get_db():
-    """
-    Get a new database session.
-    """
-    db = SessionLocal()
+    session = scoped_session(sessionmaker(bind=engine))
     try:
-        yield db
+        yield session
     finally:
-        db.close()
+        session.remove()

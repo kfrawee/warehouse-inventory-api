@@ -19,7 +19,7 @@ operation.
 
 The shop can sell a device only if it meets the UK government's industry standard.
 
-## The project includs (Task):
+## The project include (Task):
 Develop a solution for the London shop as described above:
 1. Develop a REST API for the Warehouse Inventory to
     - Add, update, or remove a device
@@ -30,5 +30,10 @@ pin code.
     - All database repositories where applicable,
     - All communicating API and endpoints.
 
+> For Swagger: check /doc or /redoc 
+
 ## How to use:
+### Setup: 
+[WIP]
+### Run:
 [WIP]
