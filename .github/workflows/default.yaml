@@ -35,7 +35,7 @@ jobs:
       - name: Run Tests
         id: pytest
         run: |
-          pytest tests/integration
+          pytest --cov --cov-config=.coveragerc tests/integration
   Unit-Tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
