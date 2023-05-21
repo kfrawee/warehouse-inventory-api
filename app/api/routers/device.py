@@ -58,7 +58,7 @@ def get_devices(
 
 
 @router.get("/{uuid}", response_model=DeviceRead)
-def get_device_by_pin(uuid: str, db: Session = Depends(get_db)):
+def get_device_by_uuid(uuid: str, db: Session = Depends(get_db)):
     device = db.query(Device).filter(Device.uuid == uuid).one_or_none()
     if not device:
         raise HTTPException(
@@ -68,7 +68,9 @@ def get_device_by_pin(uuid: str, db: Session = Depends(get_db)):
     return device
 
 
-@router.put("/{uuid}", response_model=DeviceRead)
+@router.put(
+    "/{uuid}", response_model=DeviceRead, status_code=http_status.HTTP_202_ACCEPTED
+)
 def update_device(uuid: str, device: DeviceUpdate, db: Session = Depends(get_db)):
     existing_device = db.query(Device).filter(Device.uuid == uuid).one_or_none()
     if not existing_device:
