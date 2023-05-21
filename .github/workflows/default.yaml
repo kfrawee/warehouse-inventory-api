@@ -35,7 +35,7 @@ jobs:
       - name: Run Tests
         id: pytest
         run: |
-          pytest -n 5 tests/integration
+          pytest tests/integration
   Unit-Tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
