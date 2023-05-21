@@ -58,7 +58,7 @@ def get_devices(
 
 
 @router.get("/{uuid}", response_model=DeviceRead)
-def get_device_by_uuid(uuid: str, db: Session = Depends(get_db)):
+def get_device(uuid: str, db: Session = Depends(get_db)):
     device = db.query(Device).filter(Device.uuid == uuid).one_or_none()
     if not device:
         raise HTTPException(
