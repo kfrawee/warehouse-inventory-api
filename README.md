@@ -19,8 +19,10 @@ operation.
 
 The shop can sell a device only if it meets the UK government's industry standard.
 
-## The project include (Task):
-Develop a solution for the London shop as described above:
+<br>
+
+## The project include the following:
+A solution for the London shop as described above:
 1. Develop a REST API for the Warehouse Inventory to
     - Add, update, or remove a device
     - Return all devices available for sale in numerical order of their seven-digit
@@ -30,10 +32,65 @@ pin code.
     - All database repositories where applicable,
     - All communicating API and endpoints.
 
-> For Swagger: check /doc or /redoc 
 
 ## How to use:
-### Setup: 
-[WIP]
-### Run:
-[WIP]
+### Setup and Run: 
+- Clone the repository:
+    ```sh
+    git clone https://github.com/kfrawee/warehouse-inventory-api.git
+    ```
+- Local run:
+    - Install degeneracies:
+        ```sh
+        pip install -r requirements.txt
+        ```
+    - Run the server (debug mode):
+        ```sh
+        python main.py
+        ```
+        - Debug: 
+
+            - If you're using vscode, configure debugger: `.vscode/launch.json`:
+
+                ```json
+                {
+                    "version": "0.2.0",
+                    "configurations": [
+                        {
+                            "name": "Python: Debug Server",
+                            "type": "python",
+                            "request": "launch",
+                            "program": "./debug_server.py",
+                            "console": "integratedTerminal",
+                            "justMyCode": true
+                        }
+                    ]
+                }
+                ```
+
+        - Or:
+                
+            ```sh
+            python debug_server.py
+            ```
+
+- Using docker:
+    ```sh 
+    docker-compose up -d
+    ```
+## Test and Documentation:
+To make sure the API is running, run the health curl:
+```sh
+curl --location 'http://localhost:8000/ping' 
+```
+<br>
+Navigate to `http://localhost:8000/docs` to view the API documentation and try it out. <br>
+
+Also, navigate to `http://localhost:8000/redoc` to check the API documentation.
+
+## Run Tests:
+To run tests with coverage ratio, using Pytest:
+```sh
+pytest --cov --cov-config=.coveragerc tests/integration
+```
+---
