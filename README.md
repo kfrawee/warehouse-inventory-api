@@ -84,9 +84,10 @@ To make sure the API is running, run the health curl:
 curl --location 'http://localhost:8000/ping' 
 ```
 <br>
-Navigate to `http://localhost:8000/docs` to view the API documentation and try it out. <br>
 
-Also, navigate to `http://localhost:8000/redoc` to check the API documentation.
+Now, navigate to `http://localhost:8000/docs` to view the available endpoints and test the API and view the API documentation . <br>
+
+Also, you can navigate to `http://localhost:8000/redoc` to check the API documentation.
 
 ## Run Tests:
 To run tests with coverage ratio, using Pytest:
