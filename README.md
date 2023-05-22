@@ -85,9 +85,11 @@ curl --location 'http://localhost:8000/ping'
 ```
 <br>
 
+
 Now, navigate to `http://localhost:8000/docs` to view the available endpoints and test the API and view the API documentation . <br>
 
 Also, you can navigate to `http://localhost:8000/redoc` to check the API documentation.
+
 
 ## Run Tests:
 To run tests with coverage ratio, using Pytest:
