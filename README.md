@@ -1,8 +1,6 @@
 # Warehouse Inventory API 🏪
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) 
-<!-- Pytest Coverage Comment:Begin -->
-\n<!-- Pytest Coverage Comment:End -->
 
 > A python-based solution for a Warehouse Inventory system using [FastAPI](https://fastapi.tiangolo.com/lo/).
 ## Overview:
