@@ -1,6 +1,10 @@
 # Warehouse Inventory API 🏪
-> A python-based solution for a Warehouse Inventory system using [FastAPI](https://fastapi.tiangolo.com/lo/).
 
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) 
+<!-- Pytest Coverage Comment:Begin -->
+<!-- Pytest Coverage Comment:End -->
+
+> A python-based solution for a Warehouse Inventory system using [FastAPI](https://fastapi.tiangolo.com/lo/).
 ## Overview:
 
 A shop in London has 2 million IoT tracking devices in the Warehouse Inventory for sale,
