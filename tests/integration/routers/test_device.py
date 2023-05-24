@@ -82,7 +82,50 @@ def test_get_devices(seeded_devices):
     assert response.status_code == HTTPStatus.OK
 
     response_data = response.json()
-    assert response_data.get("count") == 5
-    print(response_data)
+    assert response_data.get("count") == 5  # default limit per query
+    assert response_data.get("total") == 10  # seeded 10 devices
     assert response_data.get("devices")
     assert response_data.get("next_token")
+
+    if next_token := response_data.get("next_token"):
+        response = client.get(f"/device/?next_token={next_token}")
+        assert response.status_code == HTTPStatus.OK
+        response_data = response.json()
+        assert response_data.get("count") == 5
+        assert response_data.get("total") == 10
+        assert response_data.get("devices")
+
+        if next_token := response_data.get("next_token"):  # last device token
+            response = client.get(f"/device/?next_token={next_token}")
+            assert response.status_code == HTTPStatus.OK
+            response_data = response.json()
+            assert response_data.get("count") == 0
+            assert response_data.get("total") == 10
+            assert not response_data.get("devices")
+            assert not response_data.get("next_token")
+
+
+def test_get_devices_filter_by_status_ready(seeded_devices):
+    response = client.get("/device/?status=READY")
+    assert response.status_code == HTTPStatus.OK
+
+    response_data = response.json()
+    assert response_data.get("count")
+    assert response_data.get("devices")
+
+    if response_data.get("devices"):
+        for device in response_data.get("devices"):
+            assert device["status"] == "READY"
+
+
+def test_get_devices_filter_by_status_active(seeded_devices):
+    response = client.get("/device/?status=ACTIVE")
+    assert response.status_code == HTTPStatus.OK
+
+    response_data = response.json()
+    assert response_data.get("count")
+    assert response_data.get("devices")
+
+    if response_data.get("devices"):
+        for device in response_data.get("devices"):
+            assert device["status"] == "ACTIVE"

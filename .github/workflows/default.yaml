@@ -36,6 +36,15 @@ jobs:
         id: pytest
         run: |
           pytest --cov --cov-config=.coveragerc tests/integration
+      - name: Build coverage file
+        run: |
+          pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
+
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
   Unit-Tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -53,3 +62,4 @@ jobs:
         id: pytest
         run: |
           pytest -n 5 --cov --cov-config=.coveragerc tests/unit
+  
